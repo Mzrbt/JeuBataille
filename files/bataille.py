@@ -5,7 +5,6 @@
 from joueur import *
 from jeucartes import *
 from carte import *
-
 # =============================================================================
 # Définition de la classe
 # =============================================================================
@@ -14,11 +13,7 @@ class Bataille:
         self.nbJoueur = nbJoueur
         self.jeuCartes = jeuCartes
         
-
-        
 ################# Définition des méthodes d'instances avec contrôle #######
-
-
 
     def unTour(self, Joueur1,Joueur2):
         '''fait tourner un seul tour du jeu
