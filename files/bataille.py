@@ -78,6 +78,31 @@ class Bataille:
             return f'{J1.getNom()} a gagné la partie avec {J1.getNbCartes()} cartes contre {J2.getNbCartes()} cartes'
         else :
             return 'Les deux joueurs ont 26 cartes'
+        
+    def jouer_param(self, nomJ1, nomJ2, nb_tour):
+        '''Même fonction que jouer avec paramètres
+        pour les assertions''' 
+        jeu52 = JeuCartes(52)
+        jeu52.creerJeu()
+        jeu52.melanger()
+        J1 = Joueur(nomJ1)
+        J2 = Joueur(nomJ2)
+        J1.setMain(jeu52)
+        J2.setMain(jeu52)
+        for i in range(nb_tour):
+            print(self.unTour(J1,J2))
+            print(f'Nombre de cartes de {J1.getNom()} : {J1.getNbCartes()}')
+            print(f'Nombre de cartes de {J2.getNom()} : {J2.getNbCartes()}')
+            if J1.getNbCartes() == 0:
+                 return f"{J1.getNom()} a perdu, il n'a plus de cartes"
+            if J1.getNbCartes() == 0:
+                 return f"{J1.getNom()} a perdu, il n'a plus de cartes"
+        if J1.getNbCartes() < J2.getNbCartes():
+            return f'{J2.getNom()} a gagné la partie avec {J2.getNbCartes()} cartes contre {J1.getNbCartes()} cartes'
+        elif J1.getNbCartes() > J2.getNbCartes():
+            return f'{J1.getNom()} a gagné la partie avec {J1.getNbCartes()} cartes contre {J2.getNbCartes()} cartes'
+        else :
+            return 'Les deux joueurs ont 26 cartes'
     
 # =============================================================================
 # Programme principal 
@@ -87,9 +112,9 @@ def jouer_bataille():
     '''fonction principal qui crée un objet de type Bataille et qui lance le jeu
     pre : retourne toutes les str des methodes et des autres classes'''
     bataille = Bataille()
-    print(bataille.jouer())
+    print(bataille.jouer_param('a','b',3))
                     
-                    
+jouer_bataille()             
             
             
             
