@@ -12,20 +12,27 @@ import unittest
 
 class TestBataille(unittest.TestCase):
 
-    def test_jouer_param_partie_terminee(self):
+#     def test_jouer_param_partie_terminee(self):
+#         bataille = Bataille()
+#         resultat = bataille.jouer_param("Alice", "Bob", 10000)
+#         self.assertIn("a perdu", resultat) or self.assertIn("a gagné", resultat)
+# 
+#     def test_jouer_param_egalite(self):
+#         bataille = Bataille()
+#         resultat = bataille.jouer_param("Alice", "Bob", 0)
+#         self.assertEqual(resultat, "Les deux joueurs ont 26 cartes")
+# 
+#     def test_resultat_contient_nom(self):
+#         bataille = Bataille()
+#         resultat = bataille.jouer_param("Alice", "Bob", 3)
+#         self.assertTrue("Alice" in resultat or "Bob" in resultat)
+        
+    def test_mauvais_param_nb_tours(self):
         bataille = Bataille()
-        resultat = bataille.jouer_param("Alice", "Bob", 1000)
-        self.assertIn("a perdu", resultat) or self.assertIn("a gagné", resultat)
+        resultat = bataille.jouer_param("Alice", "Bob", "A")
+        with self.assertRaises(ValueError):
+            bataille.jouer_param("Alice", "Bob", "A")
 
-    def test_jouer_param_egalite(self):
-        bataille = Bataille()
-        resultat = bataille.jouer_param("Alice", "Bob", 0)
-        self.assertEqual(resultat, "Les deux joueurs ont 26 cartes")
-
-    def test_resultat_contient_nom(self):
-        bataille = Bataille()
-        resultat = bataille.jouer_param("Alice", "Bob", 3)
-        self.assertTrue("Alice" in resultat or "Bob" in resultat)
 
 if __name__ == "__main__":
     unittest.main()

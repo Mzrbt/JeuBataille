@@ -49,7 +49,13 @@ class Bataille:
             return f'Le joueur {Joueur2.getNom()} a gagné ce tour.'
         
         
-    
+    def demander_nb_tours(self):
+        while True:
+            try:
+                nb_tours = int(input('Donnez le nombre de tour maximum que vous voulez faire : '))
+                return nb_tours
+            except ValueError:
+                print("Erreur : Il faut entre un entier !")
         
     def jouer(self):
         '''crée un jeu, des joueurs et fait fonctionner le jeu
@@ -63,8 +69,8 @@ class Bataille:
         J2 = Joueur(nomJ2)
         J1.setMain(jeu52)
         J2.setMain(jeu52)
-        nb_tour = int(input('Donnez le nombre de tour maximum que vous voulez faire : '))
-        for i in range(nb_tour):
+               
+        for i in range(self.demander_nb_tours()):
             print(self.unTour(J1,J2))
             print(f'Nombre de cartes de {J1.getNom()} : {J1.getNbCartes()}')
             print(f'Nombre de cartes de {J2.getNom()} : {J2.getNbCartes()}')
@@ -79,7 +85,7 @@ class Bataille:
         else :
             return 'Les deux joueurs ont 26 cartes'
         
-    def jouer_param(self, nomJ1, nomJ2, nb_tour):
+    def jouer_param(self, nomJ1, nomJ2, nb_tours):
         '''Même fonction que jouer avec paramètres
         pour les assertions''' 
         jeu52 = JeuCartes(52)
@@ -89,7 +95,7 @@ class Bataille:
         J2 = Joueur(nomJ2)
         J1.setMain(jeu52)
         J2.setMain(jeu52)
-        for i in range(nb_tour):
+        for i in range(nb_tours):
             print(self.unTour(J1,J2))
             print(f'{i+1} : Nombre de cartes de {J1.getNom()} : {J1.getNbCartes()}')
             print(f'{i+1} : Nombre de cartes de {J2.getNom()} : {J2.getNbCartes()}')
@@ -112,7 +118,7 @@ def jouer_bataille():
     '''fonction principal qui crée un objet de type Bataille et qui lance le jeu
     pre : retourne toutes les str des methodes et des autres classes'''
     bataille = Bataille()
-    print(bataille.jouer_param('a','b',3))
+    print(bataille.jouer())
                     
 jouer_bataille()             
             
