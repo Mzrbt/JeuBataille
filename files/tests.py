@@ -2,8 +2,11 @@
 # ============================================================================
 # Import des modules ou classes nécessaires
 # ============================================================================
-from bataille.py import *
-import assert
+from joueur import *
+from jeucartes import *
+from carte import *
+from bataille import *
+import unittest
 # ============================================================================
 # Fichier ayant pour objectif de tester la réaction de la fonction
 # "jouer_bataille()" pour vérifier que la fonction ne comporte pas de bug
