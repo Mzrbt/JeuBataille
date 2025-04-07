@@ -2,9 +2,6 @@
 # ============================================================================
 # Import des modules ou classes nécessaires
 # ============================================================================
-from joueur import *
-from jeucartes import *
-from carte import *
 from bataille import *
 import unittest
 # ============================================================================
@@ -13,16 +10,24 @@ import unittest
 # et qu'elle fonctionne dans tout les cas de figure
 # ============================================================================
 
-## Fonction permettant le renvoi de success si la condition n'est pas levée ##
+class TestBataille(unittest.TestCase):
 
-def test_assertion(condition, message="Success"):
-    try:
-        assert condition
-        print(message)
-    except AssertionError:
-        print("AssertionError: Condition non respectée!")
-        
-########## Assertions ##########
-        
-test_assertion(jouer_bataille())
+    def test_jouer_param_partie_terminee(self):
+        bataille = Bataille()
+        resultat = bataille.jouer_param("Alice", "Bob", 1000)
+        self.assertIn("a perdu", resultat) or self.assertIn("a gagné", resultat)
+
+    def test_jouer_param_egalite(self):
+        bataille = Bataille()
+        resultat = bataille.jouer_param("Alice", "Bob", 0)
+        self.assertEqual(resultat, "Les deux joueurs ont 26 cartes")
+
+    def test_resultat_contient_nom(self):
+        bataille = Bataille()
+        resultat = bataille.jouer_param("Alice", "Bob", 3)
+        self.assertTrue("Alice" in resultat or "Bob" in resultat)
+
+if __name__ == "__main__":
+    unittest.main()
+
         

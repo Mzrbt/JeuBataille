@@ -91,18 +91,18 @@ class Bataille:
         J2.setMain(jeu52)
         for i in range(nb_tour):
             print(self.unTour(J1,J2))
-            print(f'Nombre de cartes de {J1.getNom()} : {J1.getNbCartes()}')
-            print(f'Nombre de cartes de {J2.getNom()} : {J2.getNbCartes()}')
+            print(f'{i+1} : Nombre de cartes de {J1.getNom()} : {J1.getNbCartes()}')
+            print(f'{i+1} : Nombre de cartes de {J2.getNom()} : {J2.getNbCartes()}')
             if J1.getNbCartes() == 0:
-                 return f"{J1.getNom()} a perdu, il n'a plus de cartes"
+                 return f"{i+1} : {J1.getNom()} a perdu, il n'a plus de cartes"
             if J1.getNbCartes() == 0:
-                 return f"{J1.getNom()} a perdu, il n'a plus de cartes"
+                 return f"{i+1} : {J1.getNom()} a perdu, il n'a plus de cartes"
         if J1.getNbCartes() < J2.getNbCartes():
-            return f'{J2.getNom()} a gagné la partie avec {J2.getNbCartes()} cartes contre {J1.getNbCartes()} cartes'
+            return f'{i+1} : {J2.getNom()} a gagné la partie avec {J2.getNbCartes()} cartes contre {J1.getNbCartes()} cartes'
         elif J1.getNbCartes() > J2.getNbCartes():
-            return f'{J1.getNom()} a gagné la partie avec {J1.getNbCartes()} cartes contre {J2.getNbCartes()} cartes'
+            return f'{i+1} : {J1.getNom()} a gagné la partie avec {J1.getNbCartes()} cartes contre {J2.getNbCartes()} cartes'
         else :
-            return 'Les deux joueurs ont 26 cartes'
+            return '{i+1} : Les deux joueurs ont 26 cartes'
     
 # =============================================================================
 # Programme principal 
