@@ -58,13 +58,16 @@ class Bataille:
                 print("Erreur : Il faut entre un entier !")
         
     def jouer(self):
-        '''crée un jeu, des joueurs et fait fonctionner le jeu
-        post : retourne un gagnant du jeu''' 
+        '''Crée un jeu, des joueurs et fait fonctionner le jeu
+           Post : Retourne un gagnant du jeu'''
+        
         jeu52 = JeuCartes(52)
         jeu52.creerJeu()
         jeu52.melanger()
+        
         nomJ1 = input('Rentrez le nom du premier joueur : ')
         nomJ2 = input('Rentrez le nom du deuxième joueur : ')
+        
         J1 = Joueur(nomJ1)
         J2 = Joueur(nomJ2)
         J1.setMain(jeu52)
@@ -76,8 +79,8 @@ class Bataille:
             print(f'Nombre de cartes de {J2.getNom()} : {J2.getNbCartes()}')
             if J1.getNbCartes() == 0:
                  return f"{J1.getNom()} a perdu, il n'a plus de cartes"
-            if J1.getNbCartes() == 0:
-                 return f"{J1.getNom()} a perdu, il n'a plus de cartes"
+            if J2.getNbCartes() == 0:
+                 return f"{J2.getNom()} a perdu, il n'a plus de cartes"
         if J1.getNbCartes() < J2.getNbCartes():
             return f'{J2.getNom()} a gagné la partie avec {J2.getNbCartes()} cartes contre {J1.getNbCartes()} cartes'
         elif J1.getNbCartes() > J2.getNbCartes():
